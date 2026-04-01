@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 <head>
   <title>Thaj Vlog</title>
@@ -43,37 +43,3 @@
     }
   </style>
 </head>
-
-<body>
-
-<h1>🌍 Thaj Vlog</h1>
-<p>Travel • Lifestyle • Experiences</p>
-
-<div class="videos" id="videos"></div>
-
-<script>
-const apiKey = "AIzaSyB0b5xZPh6isZ6WzsPaOWvUy8BMYsyepPM";
-const channelId = "UCnjj2xxgWwjUT2RMlg8Ea7A";
-
-fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=8`)
-.then(res => res.json())
-.then(data => {
-  const container = document.getElementById("videos");
-
-  data.items.forEach(item => {
-    if (item.id.videoId) {
-      container.innerHTML += `
-        <div class="video">
-          <a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank">
-            <img src="${item.snippet.thumbnails.medium.url}">
-            <p>${item.snippet.title}</p>
-          </a>
-        </div>
-      `;
-    }
-  });
-});
-</script>
-
-</body>
-</html>
